@@ -1,0 +1,17 @@
+{
+    "deletearchivefilesafterextractionaction" : "NULL",
+    "iffileexistsaction" : "SKIP_FILE",
+    "customextractionpathenabled" : true,
+    "bubbleenabledifarchiveextractionisinprogress" : true,
+    "subpath" : "%PACKAGENAME%",
+    "subpathminfolderstreshhold" : 0,
+    "deletearchivedownloadlinksafterextraction" : false,
+    "customextractionpath" : "/Extracted",
+    "lastworkinglibid" : "Linux-amd64",
+    "enabled" : true,
+    "subpathenabled" : true,
+    "subpathminfilesorfolderstreshhold" : 2,
+    "subpathminfilestreshhold" : 0,
+    "useoriginalfiledate" : true,
+    "freshinstall" : false
+  }

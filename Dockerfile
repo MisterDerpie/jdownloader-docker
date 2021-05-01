@@ -15,9 +15,11 @@ RUN set -ex; \
       xvfb \
       openjdk-11-jre \
       wget
-
+# Cleanup
+RUN apt-get clean
 # Get JDownloader 2
 RUN wget http://installer.jdownloader.org/JDownloader.jar
+RUN java -jar -Djava.awt.headless=true JDownloader.jar
 
 # Setup demo environment variables
 ENV HOME=/root \
@@ -29,6 +31,10 @@ ENV HOME=/root \
     DISPLAY_WIDTH=1024 \
     DISPLAY_HEIGHT=768
 
+EXPOSE 8080
+VOLUME /Downloads
+VOLUME /Extracted
+
+COPY /cfg /cfg
 COPY . /app
 CMD ["/app/entrypoint.sh"]
-EXPOSE 8080
