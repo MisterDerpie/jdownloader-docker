@@ -15,10 +15,12 @@ RUN set -ex; \
       xvfb \
       openjdk-11-jre \
       wget
+RUN apt install -y procps
 # Cleanup
 RUN apt-get clean
 # Get JDownloader 2
 RUN wget http://installer.jdownloader.org/JDownloader.jar
+# Initial run, generate configs
 RUN java -jar -Djava.awt.headless=true JDownloader.jar
 
 # Setup demo environment variables
@@ -34,7 +36,8 @@ ENV HOME=/root \
 EXPOSE 8080
 VOLUME /Downloads
 VOLUME /Extracted
+VOLUME /cfg
 
-COPY /cfg /cfg
-COPY . /app
+COPY /jdownloader /
+COPY /app /app
 CMD ["/app/entrypoint.sh"]
