@@ -43,7 +43,8 @@ docker container run -d \
     -p 8080:8080 \
     -v "$(pwd)/Downloads":/Downloads \
     -v "$(pwd)/Extracted":/Extracted \
-    -v "$(pwd)/containers":/Containers \
+    -v "$(pwd)/containers":/containers \
+    -v "$(pwd)/cfg":/cfg \
     --name jdownloader \
     jd2-base
 ```
