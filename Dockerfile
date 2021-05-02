@@ -14,8 +14,8 @@ RUN set -ex; \
       xterm \
       xvfb \
       openjdk-11-jre \
-      wget
-RUN apt install -y procps
+      wget \
+      procps
 # Cleanup
 RUN apt-get clean
 # Get JDownloader 2
