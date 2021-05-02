@@ -5,8 +5,7 @@ The main purpose for that is to run JDownloader on RaspberryPi 4 without relying
 
 # Installation
 
-The installation requires Docker installed.
-For how to install this on a Raspberry Pi 4, see `Setup on Raspberry Pi 4`.
+The installation requires [docker](https://docs.docker.com/get-docker/).
 
 1. Clone this repository
 
@@ -49,9 +48,9 @@ docker container run -d \
     jd2-base
 ```
 
-You can access JDownloader via [localhost:8080/vnc.hmtl].
+You can access JDownloader via [localhost:8080/vnc.hmtl](localhost:8080/vnc.hmtl).
 
-# License
+# Thanks / License
 
 The browser-novnc setup is based on [GitHub/theasp/docker-novnc](https://github.com/theasp/docker-novnc), which was released under MIT.
 A copy of the license is found at `LICENSE_DOCKER_NOVNC`.
