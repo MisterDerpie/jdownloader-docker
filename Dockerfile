@@ -37,6 +37,7 @@ EXPOSE 8080
 VOLUME /Downloads
 VOLUME /Extracted
 VOLUME /cfg
+VOLUME /containers
 
 COPY /jdownloader /
 COPY /app /app

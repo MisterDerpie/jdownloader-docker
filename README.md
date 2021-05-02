@@ -16,30 +16,39 @@ For how to install this on a Raspberry Pi 4, see `Setup on Raspberry Pi 4`.
 docker build -t jd2-base .
 ```
 
-## Raspberry Pi 4
-
-To make this container run, you need to install `X11/xorg` and `openbox` on the Raspberry Pi.
-Assuming you are on a Debian based image, install them before running a container.
-
-```bash
-sudo apt-get install -y xorg openbox
-```
-
 # Configuration
 
 The container exposes the following port and volumes.
 
-| Type   | Value        | Description                                  |
-|--------|--------------|----------------------------------------------|
-| Port   | `8080`       | Port to access the UI at `8080/vnc.html`     |
-| Volume | `/Downloads` | Directory where downloaded files are stored. |
-| Volume | `/Extracted` | Directory where extracted files are stored.  |
-| Volume | `/cfg`       | JDownloader's Configuration location.        |
+| Type   | Value         | Description                                  |
+|--------|---------------|----------------------------------------------|
+| Port   | `8080`        | Port to access the UI at `8080/vnc.html`     |
+| Volume | `/Downloads`  | Directory where downloaded files are stored. |
+| Volume | `/Extracted`  | Directory where extracted files are stored.  |
+| Volume | `/cfg`        | JDownloader's Configuration location.        |
+| Volume | `/containers` | Directory for container files.               |
 
 A default JDownloader configuration can be found at `jdownloader/cfg/`.
 It changes the download as well as the extract location.
-Moreover is it configured to delete files after extraction.
+Moreover it is configured to delete files after extraction.
 To extend the configuration, or take your own, you can either map your configuration directory as a volume or copy your content in the `/cfg` directory at image creation time.
+The `/containers` volume is there to give the possibility of uploading an e.g. DLC container on your host machine and opening it from JDownloader.
+
+# Launching
+
+Assuming the image is named `jd2-base`, you can launch the container as follows.
+
+```bash
+docker container run -d \
+    -p 8080:8080 \
+    -v "$(pwd)/Downloads":/Downloads \
+    -v "$(pwd)/Extracted":/Extracted \
+    -v "$(pwd)/containers":/Containers \
+    --name jdownloader \
+    jd2-base
+```
+
+You can access JDownloader via [localhost:8080/vnc.hmtl].
 
 # License
 
